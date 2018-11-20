@@ -1,6 +1,6 @@
 const hapi = require('hapi');
 const hapiAuthBasic = require('hapi-auth-basic');
-const hapiSwagger = require('hapi-auth-basic');
+const hapiSwagger = require('hapi-swagger');
 const inert = require('inert');
 const vision = require('vision');
 const cluster = require('cluster');
