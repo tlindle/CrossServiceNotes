@@ -1,5 +1,7 @@
 #!/bin/sh
 mkdir secrets
 cd secrets
-touch serviceNotesBasicAuth.json
-echo '{ "crossChurchPass": "crossPass" }' >> serviceNotesBasicAuth.json
+touch serviceNotesBasicAuthSecrets.json
+echo '{ "crossChurchPass": "crossPass" }' >> serviceNotesBasicAuthSecrets.json
+touch logzSecrets.json
+echo '{ "logzApiToken": "logzToken" }' >> logzSecrets.json

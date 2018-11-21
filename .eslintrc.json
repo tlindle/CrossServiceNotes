@@ -3,5 +3,8 @@
     "env": {
         "node": true,
         "mocha": true
+    },
+    "rules": {
+        "import/no-dynamic-require": false
     }
 }
