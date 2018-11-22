@@ -11,7 +11,10 @@
     "coverage": "export NODE_ENV=test; nyc mocha --reporter spec --recursive test/",
     "start:test": "export NODE_ENV=test; node src/server.js",
     "start:dev": "export NODE_ENV=dev; node src/server.js",
-    "start:prod": "export NODE_ENV=prod; node src/server.js"
+    "start:prod": "export NODE_ENV=prod; node src/server.js",
+    "artillery:test:healthCheck": "export NODE_ENV=test; artillery run test/healthCheck/healthCheckPerfTest.yml -o artillery/healthCheck/artilleryResult.json; artillery report -o artillery/healthCheck/artilleryReport.html artillery/healthCheck/artilleryResult.json",
+    "artillery:test:debug:healthCheck": "export NODE_ENV=test; DEBUG=http artillery run test/healthCheck/healthCheckPerfTest.yml",
+    "artillery:test:all": "chmod 777 scripts/artillery.sh; ./scripts/artillery.sh"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,7 @@
   },
   "homepage": "https://github.com/tlindle/CrossServiceNotes#readme",
   "dependencies": {
+    "artillery": "^1.6.0-25",
     "hapi": "^17.7.0",
     "hapi-auth-basic": "^5.0.0",
     "hapi-swagger": "^9.1.3",
