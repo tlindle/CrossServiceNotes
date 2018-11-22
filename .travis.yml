@@ -4,3 +4,13 @@ node_js:
 
 before_script:
   - npm run secrets
+
+jobs:  
+  include:
+    - stage: "Code Checks"
+      name: "Unit Tests"
+      script: npm run test
+    - name: "Coverage"   
+      script: npm run coverage
+    - name: "Lint"   
+      script: npm run lint
