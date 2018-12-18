@@ -1,21 +1,9 @@
-const assert = require('assert');
-const sinon = require('sinon');
+const basicAuthValidation = require('./basicAuthValidation');
 
-const logger = require('../../src/util/logger');
-const basicAuthValidation = require('../../src/auth/basicAuthValidation');
+jest.mock('../util/logger');
 
 describe('auth', () => {
   describe('basicAuthValidation', () => {
-    beforeEach(() => {
-      const fakeLogger = sinon.fake.resolves('blah');
-      sinon.replace(logger, 'info', fakeLogger);
-      sinon.replace(logger, 'error', fakeLogger);
-    });
-
-    afterEach(() => {
-      sinon.restore();
-    });
-
     it('isValid = true for good username and password', () => {
       const actualResult = basicAuthValidation('blah', 'crossChurch', 'crossPass');
       const expectedResult = {
@@ -26,7 +14,7 @@ describe('auth', () => {
         },
       };
 
-      assert.deepEqual(actualResult, expectedResult);
+      expect(actualResult).toEqual(expectedResult);
     });
 
     it('isValid = false and credentials = null for bad username', () => {
@@ -36,7 +24,7 @@ describe('auth', () => {
         credentials: null,
       };
 
-      assert.deepEqual(actualResult, expectedResult);
+      expect(actualResult).toEqual(expectedResult);
     });
 
     it('isValid = false and credentials = null for bad username', () => {
@@ -49,7 +37,7 @@ describe('auth', () => {
         },
       };
 
-      assert.deepEqual(actualResult, expectedResult);
+      expect(actualResult).toEqual(expectedResult);
     });
   });
 });

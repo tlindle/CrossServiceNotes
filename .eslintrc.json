@@ -2,9 +2,17 @@
     "extends": "airbnb-base",
     "env": {
         "node": true,
-        "mocha": true
+        "jest": true
     },
     "rules": {
-        "import/no-dynamic-require": false
+        "import/no-dynamic-require": false,
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": [
+                    "**/**/*Test.js"
+                ]
+            }
+        ]
     }
 }

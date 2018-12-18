@@ -1,4 +1,4 @@
-const healthCheckHandler = require('./healthCheckHandler');
+const healthCheckHandler = require('./handler');
 
 const healthCheckRoute = {
   method: 'GET',
@@ -10,4 +10,7 @@ const healthCheckRoute = {
   },
 };
 
-module.exports = healthCheckRoute;
+module.exports = {
+  healthCheckRoute,
+  routes: [healthCheckRoute],
+};

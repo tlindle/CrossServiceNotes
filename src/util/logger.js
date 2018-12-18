@@ -1,13 +1,16 @@
 const winston = require('winston');
 const LogzioWinstonTransport = require('winston-logzio');
-const env = require('./envConfig');
-const { logzSecrets } = require('.//secretsConfig');
+const envConfig = require('./envConfig');
+
+const env = envConfig.getEnv();
+const secretsPath = envConfig.getSecretsPath(env);
+const secrets = envConfig.getSecrets(secretsPath);
 
 const transports = (env === 'prod')
   ? new LogzioWinstonTransport({
     level: 'info',
     name: 'winston_logzio',
-    token: logzSecrets.logzApiToken,
+    token: secrets.logzApiToken,
   })
   : new winston.transports.Console();
 

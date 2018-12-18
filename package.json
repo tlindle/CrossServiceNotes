@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "secrets": "chmod 777 scripts/secrets.sh; ./scripts/secrets.sh",
-    "lint": "eslint ./src ./test",
-    "lint:fix": "eslint ./src ./test --fix",
-    "test": "export NODE_ENV=test; mocha --reporter spec --recursive test/",
-    "coverage": "export NODE_ENV=test; nyc mocha --reporter spec --recursive test/",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "test": "export NODE_ENV=test; jest",
+    "coverage": "export NODE_ENV=test; jest --coverage",
     "start:test": "export NODE_ENV=test; node src/server.js",
     "start:dev": "export NODE_ENV=dev; node src/server.js",
     "start:prod": "export NODE_ENV=prod; node src/server.js",
@@ -41,8 +41,6 @@
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
-    "sinon": "^7.1.1"
+    "jest": "^23.6.0"
   }
 }

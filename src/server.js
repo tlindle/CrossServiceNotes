@@ -9,13 +9,15 @@ const numProcessors = require('os').cpus().length;
 const moduleInfo = require('../package.json');
 const logger = require('./util/logger');
 const basicAuthValidation = require('./auth/basicAuthValidation');
-const healthCheckRoute = require('./healthCheck/healthCheckRoute');
+const healthCheckRoutes = require('./healthCheck/route').routes;
 
 const server = hapi.server({
   port: 8080,
 });
 
-server.route([healthCheckRoute]);
+server.route([
+  ...healthCheckRoutes,
+]);
 
 const swaggerOptions = {
   info: {
@@ -25,32 +27,18 @@ const swaggerOptions = {
 };
 
 const init = async () => {
-  try {
-    await server.register([
-      inert,
-      vision,
-      hapiAuthBasic,
-      {
-        plugin: hapiSwagger,
-        options: swaggerOptions,
-      },
-    ]);
-  } catch (e) {
-    logger.error(`Server register error: ${e}`);
-  }
-
-  try {
-    server.auth.strategy('simple', 'basic', { validate: basicAuthValidation });
-    server.auth.default('simple');
-  } catch (e) {
-    logger.error(`Server auth error: ${e}`);
-  }
-
-  try {
-    await server.start();
-  } catch (e) {
-    logger.error(`Server start error: ${e}`);
-  }
+  await server.register([
+    inert,
+    vision,
+    hapiAuthBasic,
+    {
+      plugin: hapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
+  server.auth.strategy('simple', 'basic', { validate: basicAuthValidation });
+  server.auth.default('simple');
+  await server.start();
 };
 
 if (cluster.isMaster) {
