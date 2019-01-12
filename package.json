@@ -1,7 +1,7 @@
 {
-  "name": "@cross-church/service-notes",
+  "name": "@cross-church/cc-api",
   "version": "0.0.1",
-  "description": "Node Services for Service Notes",
+  "description": "Node Services for the Cross Church app",
   "main": "index.js",
   "scripts": {
     "secrets": "chmod 777 scripts/secrets.sh; ./scripts/secrets.sh",
@@ -18,14 +18,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tlindle/CrossServiceNotes.git"
+    "url": "git+https://github.com/tlindle/cc-api.git"
   },
   "author": "tlindle",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tlindle/CrossServiceNotes/issues"
+    "url": "https://github.com/tlindle/cc-api/issues"
   },
-  "homepage": "https://github.com/tlindle/CrossServiceNotes#readme",
+  "homepage": "https://github.com/tlindle/cc-api#readme",
   "dependencies": {
     "artillery": "^1.6.0-25",
     "hapi": "^17.7.0",
@@ -33,6 +33,8 @@
     "hapi-swagger": "^9.1.3",
     "inert": "^5.1.2",
     "ip": "^1.1.5",
+    "joi": "^14.3.1",
+    "mongodb": "^3.1.10",
     "vision": "^5.4.3",
     "winston": "^3.1.0",
     "winston-logzio": "^3.0.2"

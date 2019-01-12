@@ -10,6 +10,7 @@ const moduleInfo = require('../package.json');
 const logger = require('./util/logger');
 const basicAuthValidation = require('./auth/basicAuthValidation');
 const healthCheckRoutes = require('./healthCheck/route').routes;
+const sermonHelperRoutes = require('./sermonHelper/route').routes;
 
 const server = hapi.server({
   port: 8080,
@@ -17,6 +18,7 @@ const server = hapi.server({
 
 server.route([
   ...healthCheckRoutes,
+  ...sermonHelperRoutes,
 ]);
 
 const swaggerOptions = {

@@ -1,5 +1,5 @@
 const envConfig = require('./envConfig');
-const secrets = require('../../secrets/cc-orchestration-secrets.json');
+const secrets = require('../../secrets/cc-api-secrets.json');
 
 describe('util', () => {
   describe('envConfig', () => {
@@ -30,6 +30,29 @@ describe('util', () => {
     describe('getSecrets', () => {
       it('should return the correct secrets', () => {
         expect(envConfig.getSecrets('../../secrets')).toEqual(secrets);
+      });
+    });
+
+    describe('getConfig', () => {
+      it('should return the correct config', () => {
+        expect(envConfig.getConfig('test')).toEqual({
+          db: {
+            mongo: {
+              uriPrefix: 'mongodb+srv://',
+              host: 'cross0-uhq5j.gcp.mongodb.net',
+              database: 'cross',
+            },
+          },
+        });
+        expect(envConfig.getConfig('dev')).toEqual({
+          db: {
+            mongo: {
+              uriPrefix: 'mongodb+srv://',
+              host: 'cross0-uhq5j.gcp.mongodb.net',
+              database: 'cross',
+            },
+          },
+        });
       });
     });
   });

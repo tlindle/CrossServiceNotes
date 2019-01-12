@@ -1,8 +1,10 @@
 #!/bin/sh
 mkdir secrets
 cd secrets
-touch cc-orchestration-secrets.json
+touch cc-api-secrets.json
 echo '{
   "crossChurchPass": "crossPass",
-  "logzApiToken": "logzToken"
-}' >> cc-orchestration-secrets.json
+  "logzApiToken": "logzToken",
+  "mongoUser": "mongoUser",
+  "mongoPass": "mongoPass"
+}' >> cc-api-secrets.json
